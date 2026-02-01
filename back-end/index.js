@@ -15,4 +15,10 @@ app.post('/links', (req, res) => {
     res.status(201).json(novoLink);
 });
 
+app.delete('/links/:id', (req, res) => {
+  const { id } = req.params;
+  links = links.filter(link => String(link.id) !== String(id));
+  res.status(204).send();
+});
+
 app.listen(3001, () => console.log("API rodando na porta 3001"));
